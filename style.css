@@ -1,0 +1,14 @@
+.page {
+	  display: none;
+    text-align: center;
+    font-family: sans-serif;
+    padding: 15px;
+}
+
+.search-form {
+		text-align: center;
+    margin: 0 auto;
+    border-radius: .3rem;
+    -webkit-transition:  height 1s; /* Safari */
+    transition: height 1s;
+}
