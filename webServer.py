@@ -142,7 +142,8 @@ def encodeResistor(value, unitModifier, resistanceUnit):
     return responseString
 
 def getOctopartResponse(techSpec, component):
-    techSpecResponses = {"supply_voltage_dc":"The supply voltage for "}
+    print("Getting octopart spec "+techSpec+" for "+component)
+    techSpecResponses = {"supply_voltage_dc":"The supply voltage for ", "pin_count":"The number of pins in "}
     mpn= ""
     response = ""
 
