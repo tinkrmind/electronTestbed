@@ -24,3 +24,12 @@ I'm more familiar with python for backend. So, even though it would make sense t
 ### Design choice: Show conversationhistoryor not?
 
 Since this website is meant to be a testbed for voice interaction, I thought it would be better to only show the current response instead of a chat history format.
+
+### Error: cross origin request blocked
+
+Modern web browser security generally doesn't allow the browser to point directly to a local file. This is an issue is you are hosting the backend server in the same machine as the frontend. To get around this I install chromium browser and ran it without web security from th command line.  
+
+  $ sudo apt install chromium-browser
+  $ chromium-browser --disable-web-security --user-data-dir
+
+Now the chromium browser that opens will allow cross origin requests.
