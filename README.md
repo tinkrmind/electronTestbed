@@ -1,4 +1,5 @@
 # Testbed for ELectron
+
 ## The electronics help assistant
 
 Electron is a voice assistant based on the google AIY kit. It allows novice electronics hobbyists to get answers to everyday questions like decoding resistor values from band colors, and looking up some part specifications without having to go through datasheets.
@@ -11,7 +12,9 @@ Octopart is a generic search engine for electronics parts. It aggregates data fr
 
 The process of obtaining API access is very straightforward and [well documented](https://octopart.com/api/docs/v3/overview#authentication).
 
-curl -G http://octopart.com/api/v3/parts/match -d queries="[{\"mpn\":\"555 timer\"}]" -d apikey=861f85cf -d pretty_print=true
+  $ curl -G http://octopart.com/api/v3/parts/match -d queries="[{\"mpn\":\"555 timer\"}]" -d apikey=861f85cf -d pretty_print=true
+
+  http://octopart.com/api/v3/parts/match?apikey=861f85cf&queries=%5B%7B%22mpn%22%3A%22LMC555CN%22%7D%5D&include%5B%5D=specs
 
 ### DialogFlow API
 

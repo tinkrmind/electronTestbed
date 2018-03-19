@@ -8,6 +8,10 @@ var app={
       }
     });
 
+    $('input').on('click focusin', function() {
+      this.value = '';
+    });
+
     $('#refresh').click(function(){
       event.preventDefault();
       speech = "restart conversation";
