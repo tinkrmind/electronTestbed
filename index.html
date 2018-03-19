@@ -7,31 +7,32 @@
       Electron Testbed.
     </title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-    <!-- <script src="jquery-2.1.3.min.js"></script>
-    <script src="script.js"></script> -->
   </head>
 
   <body>
-    <div class="search-form">
+    <div class="search-form" id = "form">
       <form>
-          <input id="target" type="text" placeholder="Ask me something">
-          <button id = "refresh">Refresh</button>
+          <input id="target" type="text" placeholder="Talk to me!">
       </form>
     </div>
 
     <div id="response">
-        <p>response</p>
+        <!-- <p>response</p> -->
     </div>
-
+    <div>
+      <img id = "refresh" src="refreshButton.png" />
+    </div>
     <script src="jquery-2.1.3.min.js"></script>
 		<script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<script type="text/javascript">
 			$(document).ready(function(){
 				app.initialize();
 			});
 		</script>
-
+    <style>
+      background: #f1036a
+    </style>
   </body>
 
 </html>

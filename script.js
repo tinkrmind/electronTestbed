@@ -14,6 +14,10 @@ var app={
 
     $('#refresh').click(function(){
       event.preventDefault();
+      // TODO:
+      // Clear text input field n refresh
+      // $('#target').value = '';
+      // $('input').val='';
       speech = "restart conversation";
       app.getServerResponse(speech);
     });
@@ -21,15 +25,12 @@ var app={
 
   makeHTML:function(data){
     $('#response').html("<p>"+data+"</p>");
-    console.log("3")
-
-    $('#response').show(500);
-    console.log("4")
+    console.log("3: data= "+data)
   },
 
   getServerResponse: function(speech) {
     console.log("1 : speech = "+speech)
-    $('#response').html("<img src=loading.gif />");
+    $('#response').html("<img style=\"width: 110px\"src=loading.gif />");
 
 		var reqURL = "http://localhost:8080/?test="+speech;
     $.ajax({
