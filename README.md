@@ -36,3 +36,5 @@ Modern web browser security generally doesn't allow the browser to point directl
   $ chromium-browser --disable-web-security --user-data-dir
 
 Now the chromium browser that opens will allow cross origin requests.
+
+### Keeping your secrets secret : [config file in python](https://hackernoon.com/4-ways-to-manage-the-configuration-in-python-4623049e841b)

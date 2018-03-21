@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 from http.server import BaseHTTPRequestHandler, HTTPServer
 # import SocketServer
 from urllib.parse import urlparse
@@ -28,7 +27,11 @@ except ImportError:
 import json
 import math
 
-CLIENT_ACCESS_TOKEN = 'e65a38c1c3494f44a77aec4a02863df8'
+import config
+# dialogflow
+CLIENT_ACCESS_TOKEN = config.dialogflow_config['CLIENT_ACCESS_TOKEN']
+# octopart
+API_KEY = config.octopart_config['API_KEY']
 sessionID = time.time()
 firstRun = 0
 
@@ -148,7 +151,7 @@ def getOctopartResponse(techSpec, component):
     response = ""
 
     url = "http://octopart.com/api/v3/parts/search"
-    url += "?apikey=861f85cf"
+    url += "?apikey="+API_KEY
 
     args = [
        ('q', component),
@@ -174,7 +177,7 @@ def getOctopartResponse(techSpec, component):
        mpn = part['mpn']
 
     url = "http://octopart.com/api/v3/parts/match"
-    url += "?apikey=861f85cf"
+    url += "?apikey="+API_KEY
 
     args = [
        ('queries', "[{\"mpn\":\""+mpn+"\"}]"),
@@ -269,7 +272,7 @@ class S(BaseHTTPRequestHandler):
 
         self.wfile.write(responseSpeech.encode())
 
-def run(server_class=HTTPServer, handler_class=S, port=8080):
+def run(server_class=HTTPServer, handler_class=S, port=config.port):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print('Starting httpd...')

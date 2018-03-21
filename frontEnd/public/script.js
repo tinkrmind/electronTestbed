@@ -30,9 +30,9 @@ var app={
 
   getServerResponse: function(speech) {
     console.log("1 : speech = "+speech)
-    $('#response').html("<img style=\"width: 110px\"src=loading.gif />");
+    $('#response').html("<img style=\"width: 110px\"src=../assets/loading.gif />");
 
-		var reqURL = "http://localhost:8080/?test="+speech;
+		var reqURL = "http://localhost:7999/?test="+speech;
     $.ajax({
 			url: reqURL,
 			type: 'GET',
