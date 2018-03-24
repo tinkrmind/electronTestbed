@@ -32,7 +32,7 @@ var app={
     console.log("1 : speech = "+speech)
     $('#response').html("<img style=\"width: 110px\"src=../assets/loading.gif />");
 
-		var reqURL = "http://localhost:7999/?test="+speech;
+		var reqURL = "http://104.236.250.123:7999/?test="+speech;
     $.ajax({
 			url: reqURL,
 			type: 'GET',

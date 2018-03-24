@@ -1,4 +1,4 @@
-# Testbed for ELectron
+# Testbed for Electron
 
 ## The electronics help assistant
 
