@@ -12,9 +12,9 @@ Octopart is a generic search engine for electronics parts. It aggregates data fr
 
 The process of obtaining API access is very straightforward and [well documented](https://octopart.com/api/docs/v3/overview#authentication).
 
-  $ curl -G http://octopart.com/api/v3/parts/match -d queries="[{\"mpn\":\"555 timer\"}]" -d apikey=861f85cf -d pretty_print=true
+    $ curl -G http://octopart.com/api/v3/parts/match -d queries="[{\"mpn\":\"555 timer\"}]" -d apikey=861f85cf -d pretty_print=true
 
-  http://octopart.com/api/v3/parts/match?apikey=861f85cf&queries=%5B%7B%22mpn%22%3A%22LMC555CN%22%7D%5D&include%5B%5D=specs
+    http://octopart.com/api/v3/parts/match?apikey=861f85cf&queries=%5B%7B%22mpn%22%3A%22LMC555CN%22%7D%5D&include%5B%5D=specs
 
 ### DialogFlow API
 
@@ -32,8 +32,8 @@ Since this website is meant to be a testbed for voice interaction, I thought it 
 
 Modern web browser security generally doesn't allow the browser to point directly to a local file. This is an issue is you are hosting the backend server in the same machine as the frontend. To get around this I install chromium browser and ran it without web security from th command line.  
 
-  $ sudo apt install chromium-browser
-  $ chromium-browser --disable-web-security --user-data-dir
+    $ sudo apt install chromium-browser
+    $ chromium-browser --disable-web-security --user-data-dir
 
 Now the chromium browser that opens will allow cross origin requests.
 
