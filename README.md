@@ -1,5 +1,9 @@
 # Testbed for Electron
 
+# [Electron Demo](https://vimeo.com/260140685)
+
+[![Electron Demo](https://i.vimeocdn.com/video/688784538.webp)](https://vimeo.com/260140685)
+
 ## The electronics help assistant
 
 Electron is a voice assistant based on the google AIY kit. It allows novice electronics hobbyists to get answers to everyday questions like decoding resistor values from band colors, and looking up some part specifications without having to go through datasheets.
