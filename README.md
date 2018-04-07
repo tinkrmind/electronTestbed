@@ -38,3 +38,5 @@ Modern web browser security generally doesn't allow the browser to point directl
 Now the chromium browser that opens will allow cross origin requests.
 
 ### Keeping your secrets secret : [config file in python](https://hackernoon.com/4-ways-to-manage-the-configuration-in-python-4623049e841b)
+
+<iframe src="https://player.vimeo.com/video/260140685" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/260140685">Electron Self Destruct</a> from <a href="https://vimeo.com/user73395620">tinkrmind</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
