@@ -14,10 +14,7 @@ var app={
 
     $('#refresh').click(function(){
       event.preventDefault();
-      // TODO:
-      // Clear text input field n refresh
-      // $('#target').value = '';
-      // $('input').val='';
+      $( "#target" ).val('');
       speech = "restart conversation";
       app.getServerResponse(speech);
     });
@@ -32,7 +29,9 @@ var app={
     console.log("1 : speech = "+speech)
     $('#response').html("<img style=\"width: 110px\"src=../assets/loading.gif />");
 
-		var reqURL = "http://104.236.250.123:7999/?test="+speech;
+    var reqURL = "http://as11613.itp.io:7999/?test="+speech;
+		// var reqURL = "http://104.236.250.123:7999/?test="+speech;
+    // var reqURL = "http://127.0.0.1:7999/?test="+speech;
     $.ajax({
 			url: reqURL,
 			type: 'GET',
@@ -47,4 +46,6 @@ var app={
 			}
 		});
 	}
+
+
 };
