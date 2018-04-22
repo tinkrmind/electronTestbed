@@ -3,9 +3,10 @@ var app={
     var pos = 0;
     var curpos = 0;
     var requests = new Array();
-    $( "#target" ).keypress(function( event ) {
+    $( "#target" ).keydown(function( event ) {
       // enter 13
       if ( event.which == 13 ) {
+        console.log("enter");
          event.preventDefault();
          speech = $( "#target" ).val();
          app.getServerResponse(speech);
@@ -17,9 +18,12 @@ var app={
       if ( event.which == 38 ) {
          event.preventDefault();
          curpos++;
+         console.log("upArrow");
          index = pos-curpos;
          if(typeof requests[index] === 'undefined') {
-          // does not exist - DO NOTHING
+          // does not exist prevent curpos from being changed
+          curpos--;
+          $( "#target" ).val('---end of history---');
          }
          else {
           // does exist
@@ -27,11 +31,14 @@ var app={
          }
       }
       if ( event.which == 40 ) {
+        console.log("downArrow");
          event.preventDefault();
          curpos--;
          index = pos-curpos;
          if(typeof requests[index] === 'undefined') {
-          // does not exist - DO NOTHING
+          // does not exist - prevent curpos from being changed
+          curpos++;
+          $( "#target" ).val('');
          }
          else {
           // does exist
@@ -57,7 +64,7 @@ var app={
 
   makeHTML:function(data){
     $('#response').html("<p>"+data+"</p>");
-    console.log("3: data= "+data)
+    // console.log("3 : data = "+data)
   },
 
   getServerResponse: function(speech) {
