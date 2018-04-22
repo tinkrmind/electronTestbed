@@ -1,10 +1,42 @@
 var app={
   initialize: function() {
+    var pos = 0;
+    var curpos = 0;
+    var requests = new Array();
     $( "#target" ).keypress(function( event ) {
+      // enter 13
       if ( event.which == 13 ) {
          event.preventDefault();
          speech = $( "#target" ).val();
          app.getServerResponse(speech);
+         requests[pos] = speech;
+         pos++;
+         curpos = 0;
+      }
+      //up arrow 38, down arrow 40
+      if ( event.which == 38 ) {
+         event.preventDefault();
+         curpos++;
+         index = pos-curpos;
+         if(typeof requests[index] === 'undefined') {
+          // does not exist - DO NOTHING
+         }
+         else {
+          // does exist
+           $( "#target" ).val(requests[index]);
+         }
+      }
+      if ( event.which == 40 ) {
+         event.preventDefault();
+         curpos--;
+         index = pos-curpos;
+         if(typeof requests[index] === 'undefined') {
+          // does not exist - DO NOTHING
+         }
+         else {
+          // does exist
+           $( "#target" ).val(requests[index]);
+         }
       }
     });
 
@@ -17,6 +49,9 @@ var app={
       $( "#target" ).val('');
       speech = "restart conversation";
       app.getServerResponse(speech);
+      requests[pos] = speech;
+      pos++;
+      curpos = 0;
     });
 	},
 
@@ -46,6 +81,4 @@ var app={
 			}
 		});
 	}
-
-
 };
