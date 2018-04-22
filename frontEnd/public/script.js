@@ -1,8 +1,8 @@
 var app={
   initialize: function() {
-    var pos = 0;
     var curpos = 0;
-    var requests = new Array();
+    var requests = JSON.parse(localStorage.getItem("electronTestbed_requests"));
+    pos = requests.length;
     $( "#target" ).keydown(function( event ) {
       // enter 13
       if ( event.which == 13 ) {
@@ -11,6 +11,7 @@ var app={
          speech = $( "#target" ).val();
          app.getServerResponse(speech);
          requests[pos] = speech;
+         localStorage.setItem("electronTestbed_requests", JSON.stringify(requests));
          pos++;
          curpos = 0;
       }
@@ -57,6 +58,7 @@ var app={
       speech = "restart conversation";
       app.getServerResponse(speech);
       requests[pos] = speech;
+      localStorage.setItem("electronTestbed_requests", JSON.stringify(requests));
       pos++;
       curpos = 0;
     });

@@ -46,3 +46,7 @@ Now the chromium browser that opens will allow cross origin requests.
 ### List all ports in use
 
     $ sudo netstat -plnt
+
+### Storing data on client machine
+
+I wanted to store an array of requests made by the user locally to display them in a rolling history, like terminal. Doing this on local machine makes sense because there will be little lag in accessing it later. I used [HTML5 storage API](https://www.w3schools.com/html/html5_webstorage.asp) for this. The API only allows for stings to be stored. Arrays are not supported. So I used [JSON stringify and parse](https://stackoverflow.com/questions/3357553/how-do-ijs get store-an-array-in-localstorage) to converte between JS array and string.
