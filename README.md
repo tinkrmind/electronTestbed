@@ -10,6 +10,19 @@ Electron is a voice assistant based on the google AIY kit. It allows novice elec
 
 I'm using the dialogFlow API to run natural language processing to understand user intent and then processing them in python locally. For intents involving part specifications(e.g. what is the supply voltage for a 555 timer?) I use the Octopart API. The final user interface is going to be completely vocal, but the test bed is completely visual for faster iteration and testing. Think Wolfram Alpha.
 
+### How to use(for self reference)
+
+On server:
+    $ forever /root/electronTestbed/frontEnd/server.js
+    $ python3 /root/electronTestbed/backEnd/webServer.py
+
+On client:
+    $ chromium-browser --disable-web-security --user-data-dir
+
+On Chromium:
+    file:///home/tinkrmind/PROJECTS/electronTestbed/frontEnd/public/index.html
+
+
 ### Octopart API
 
 Octopart is a generic search engine for electronics parts. It aggregates data from leading distrinutors like digikey, mouser, adafruit.. and presents them in a consistent format. The Octopart API is a REST API that's easy to query in any programming environment. More importantly, it provides a RESTful way to search part specifications without having to process datasheets.
