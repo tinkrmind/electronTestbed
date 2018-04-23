@@ -61,7 +61,7 @@ Audio response is generated on the server whether or not the client requests it.
 
 ### Prevent caching!
 
-The speech audio is stored in the server. The client requests the audio to play it. Sadly, the client tends to cache the audio file and keeps repeating the same response phrase. To prevent thisS
+The speech audio is stored in the server. The client requests the audio to play it. Sadly, the client tends to cache the audio file and keeps repeating the same response phrase. To prevent this I added a dummy load to the source URL as a quick and dirty fix. ((reference](https://stackoverflow.com/questions/44725541/express-serving-static-file-cant-set-headers-after-they-are-send))
 
 ### Speech to text
 

@@ -1,3 +1,4 @@
+var ms = Date.now();
 var play_audio = 1;
 var requests = JSON.parse(localStorage.getItem("electronTestbed_requests"));
 
@@ -111,7 +112,8 @@ var app={
         if(res != ""){ // Play audio if play_audio is 1 and we got a response from server
           if(play_audio == 1){
             // Add audio
-            $('#audio').html('<audio autoplay><source src="http://as11613.itp.io:1337/assets/output.mp3" type="audio/mpeg"></audio>');
+            $('#audio').html('<audio autoplay><source src="http://as11613.itp.io:1337/assets/output.mp3?dummy='+ms+'" type="audio/mpeg"></audio>');
+            ms = Date.now();
           }
         } else{
           $('#audio').html('<audio autoplay><source src="http://as11613.itp.io:1337/assets/defaultResponse.mp3" type="audio/mpeg"></audio>');
