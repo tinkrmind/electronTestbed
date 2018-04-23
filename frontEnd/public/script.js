@@ -87,6 +87,8 @@ var app={
         res = decodeURI(data);
 				console.log("2 : data = "+res);
 				app.makeHTML(res);
+        // Add audio
+        $('#audio').html('<audio autoplay><source src="http://as11613.itp.io:1337/assets/output.mp3" type="audio/mpeg"></audio>');
 			}
 		});
 	}
