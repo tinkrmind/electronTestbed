@@ -81,22 +81,22 @@ def decodeResistor(band1, band2, band3, band4):
     responseString = str(resistorValue) + 'ohms';
     print("Resistance:", resistorValue)
     if v3 > 1:
-        responseString = str('{:g}'.format((v1*10+v2)*pow(10, (v3-3)))) + 'kilo ohms';
+        responseString = str('{:g}'.format((v1*10+v2)*pow(10, (v3-3)))) + ' kilo ohms';
     if v3 > 4:
-        responseString = str('{:g}'.format((v1*10+v2)*pow(10, (v3-6)))) + ' mega ohms ';
+        responseString = str('{:g}'.format((v1*10+v2)*pow(10, (v3-6)))) + ' mega ohms';
     if v3 > 7:
-        responseString = str('{:g}'.format((v1*10+v2)*pow(10, (v3-9)))) + ' giga ohms ';
+        responseString = str('{:g}'.format((v1*10+v2)*pow(10, (v3-9)))) + ' giga ohms';
 
     if v4 == 0:
         if random.randint(0, 1):
-            responseString += 'plus minus five percent';
+            responseString += ' plus minus five percent';
         else:
-            responseString += 'tolerance five percent';
+            responseString += ' tolerance five percent';
     if v4 == 1:
         if random.randint(0,1):
-            responseString += 'plus minus ten percent';
+            responseString += ' plus minus ten percent';
         else:
-            responseString += 'tolerance ten percent';
+            responseString += ' tolerance ten percent';
 
     return responseString
 
@@ -270,7 +270,33 @@ class S(BaseHTTPRequestHandler):
                 elif resetConversationString in responseSpeech:
                     responseSpeech = restartConversation()
 
+        synthesize_text(responseSpeech)
         self.wfile.write(responseSpeech.encode())
+
+def synthesize_text(text):
+    """Synthesizes speech from the input string of text."""
+    from google.cloud import texttospeech
+    client = texttospeech.TextToSpeechClient()
+
+    input_text = texttospeech.types.SynthesisInput(text=text)
+
+    # Note: the voice can also be specified by name.
+    # Names of voices can be retrieved with client.list_voices().
+    voice = texttospeech.types.VoiceSelectionParams(
+        language_code='en-US',
+        ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
+
+    audio_config = texttospeech.types.AudioConfig(
+        audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+
+    response = client.synthesize_speech(input_text, voice, audio_config)
+
+    # The response's audio_content is binary.
+    with open('../frontEnd/assets/output.mp3', 'wb') as out:
+        out.write(response.audio_content)
+        print('Audio content written to file "output.mp3"')
+
+synthesize_text("default audio")
 
 def run(server_class=HTTPServer, handler_class=S, port=config.port):
     server_address = ('', port)
