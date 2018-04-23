@@ -53,8 +53,16 @@ I wanted to store an array of requests made by the user locally to display them 
 
 ### Generating audio
 
-Audio is generated using the Google text to speech API. This API is chosen because it will work natively with Google AIY, the hardware part of electron for which this website is a testbed. I followed the Google text to speech [docs](https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python), specifically for python. I'm facing issues with setting up credentials persistently but this is a low priority issue. 
+Audio is generated using the Google text to speech API. This API is chosen because it will work natively with Google AIY, the hardware part of electron for which this website is a testbed. I followed the Google text to speech [docs](https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python), specifically for python. I'm facing issues with setting up credentials persistently but this is a low priority issue.
 
 ### Playing audio
 
 Audio response is generated on the server whether or not the client requests it. If the client wants to play audio, it requests the audio via HTML5 audio, and the audio is embedded in a HTML div, and set to autoplay([reference](https://www.w3schools.com/tags/att_audio_autoplay.asp)). This way the sound can be played without any visible audio player ([reference](https://stackoverflow.com/questions/15533636/playing-sound-in-hidden-tag)).
+
+### Prevent caching!
+
+The speech audio is stored in the server. The client requests the audio to play it. Sadly, the client tends to cache the audio file and keeps repeating the same response phrase. To prevent thisS
+
+### Speech to text
+
+I modified code from [this](https://www.labnol.org/software/add-speech-recognition-to-website/19989/) excellent article. It uses Google speech recognition and there is no need to bother with the cloud console!
