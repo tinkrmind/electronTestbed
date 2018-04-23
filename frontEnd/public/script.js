@@ -1,4 +1,7 @@
+var play_audio = 1;
+
 var app={
+
   initialize: function() {
     var curpos = 0;
     var requests = JSON.parse(localStorage.getItem("electronTestbed_requests"));
@@ -62,6 +65,17 @@ var app={
       pos++;
       curpos = 0;
     });
+
+    $('#audio-icon').click(function(){
+      event.preventDefault();
+      if(play_audio == 1){
+          $('#audio-icon').html("<img style=\"width: 40px\"src=../assets/mute.png />");
+          play_audio = 0;
+      } else{
+        $('#audio-icon').html("<img style=\"width: 40px\"src=../assets/play.png />");
+        play_audio = 1;
+      }
+    });
 	},
 
   makeHTML:function(data){
@@ -71,6 +85,7 @@ var app={
 
   getServerResponse: function(speech) {
     console.log("1 : speech = "+speech)
+    console.log($('#response').html("<img style=\"width: 110px\"src=../assets/loading.gif />"));
     $('#response').html("<img style=\"width: 110px\"src=../assets/loading.gif />");
 
     var reqURL = "http://as11613.itp.io:7999/?test="+speech;
@@ -87,8 +102,10 @@ var app={
         res = decodeURI(data);
 				console.log("2 : data = "+res);
 				app.makeHTML(res);
-        // Add audio
-        $('#audio').html('<audio autoplay><source src="http://as11613.itp.io:1337/assets/output.mp3" type="audio/mpeg"></audio>');
+        if(play_audio == 1){
+          // Add audio
+          $('#audio').html('<audio autoplay><source src="http://as11613.itp.io:1337/assets/output.mp3" type="audio/mpeg"></audio>');
+        }
 			}
 		});
 	}
