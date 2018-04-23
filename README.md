@@ -51,6 +51,18 @@ Now the chromium browser that opens will allow cross origin requests.
 
 I wanted to store an array of requests made by the user locally to display them in a rolling history, like terminal. Doing this on local machine makes sense because there will be little lag in accessing it later. I used [HTML5 storage API](https://www.w3schools.com/html/html5_webstorage.asp) for this. The API only allows for stings to be stored. Arrays are not supported. So I used [JSON stringify and parse](https://stackoverflow.com/questions/3357553/how-do-ijs get store-an-array-in-localstorage) to converte between JS array and string.
 
+### Generating audio
+
+Audio is generated using the Google text to speech API. This API is chosen because it will work natively with Google AIY, the hardware part of electron for which this website is a testbed. I followed the Google text to speech [docs](https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python), specifically for python. I'm facing issues with setting up credentials persistently but this is a low priority issue.
+
 ### Playing audio
 
 Audio response is generated on the server whether or not the client requests it. If the client wants to play audio, it requests the audio via HTML5 audio, and the audio is embedded in a HTML div, and set to autoplay([reference](https://www.w3schools.com/tags/att_audio_autoplay.asp)). This way the sound can be played without any visible audio player ([reference](https://stackoverflow.com/questions/15533636/playing-sound-in-hidden-tag)).
+
+### Prevent caching!
+
+The speech audio is stored in the server. The client requests the audio to play it. Sadly, the client tends to cache the audio file and keeps repeating the same response phrase. To prevent this I added a dummy load to the source URL as a quick and dirty fix. ((reference](https://stackoverflow.com/questions/44725541/express-serving-static-file-cant-set-headers-after-they-are-send))
+
+### Speech to text
+
+I modified code from [this](https://www.labnol.org/software/add-speech-recognition-to-website/19989/) excellent article. It uses Google speech recognition and there is no need to bother with the cloud console!

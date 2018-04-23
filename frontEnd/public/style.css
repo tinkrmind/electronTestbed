@@ -29,7 +29,8 @@ body {
 }
 
 .center-vert{
-	top: 50%;
+	/*top: 50%;*/
+	vertical-align: center;
 }
 
 #response{
@@ -46,6 +47,26 @@ body {
 	right:0;
 	float:right;
 	padding: 5px;
+}
+
+/*#audio-icon{
+	display: inline-block;
+	padding: 5;
+	vertical-align: bottom;
+	height: 40px;
+}*/
+
+.container {
+	display: inline-block;
+	vertical-align: top;
+	padding-left: 8px;
+  height: 38px;
+}
+
+/* resize images */
+.container img {
+  width: auto;
+  height: 100%;
 }
 
 input[type="text"] {

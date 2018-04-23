@@ -1,0 +1,1 @@
+/home/tinkrmind/PROJECTS/electronTestbed/frontEnd/test_stt/script.js
